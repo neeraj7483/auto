@@ -1,0 +1,53 @@
+sql script--------------
+
+
+drop sequence inbox_seq;
+create sequence inbox_seq
+start with 1
+minvalue 1
+maxvalue 9999999
+nocycle;
+
+drop sequence orderid_seq;
+Create sequence orderid_seq start with 1
+increment by 1
+minvalue 1
+maxvalue 999999
+nocycle;
+
+drop table inbox;
+create table inbox(
+messageId varchar2(30) PRIMARY key,
+massage varchar2(100),
+inbox_user_id varchar2(30),
+message_from varchar2(30));
+
+
+create table customers( 
+customerId varchar2(30) PRIMARY key,
+password varchar2(20) not null,
+name varchar2(40),
+emailId varchar2(30) UNIQUE,
+location varchar2(30),
+contactNumber varchar2(10)
+);
+
+create table dealers( 
+dealerId varchar2(30) PRIMARY key,
+password varchar2(20) not null,
+name varchar2(40),
+emailId varchar2(30) UNIQUE,
+location varchar2(30),
+contactNumber varchar2(10),
+rating number);
+
+drop table Dealeraddress;
+drop table  Customeraddress;
+create table Dealeraddress(userID varchar(20) references Dealers(dealerid) ,
+streetAddress varchar2(60),
+state varchar2(30),
+pincode varchar2(6));
+create table Customeraddress(userID varchar(20) references Customers(customerid) ,
+streetAddress varchar2(60),
+state varchar2(30),
+pincode varchar2(6));
