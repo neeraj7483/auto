@@ -51,3 +51,14 @@ create table Customeraddress(userID varchar(20) references Customers(customerid)
 streetAddress varchar2(60),
 state varchar2(30),
 pincode varchar2(6));
+
+
+
+
+
+
+//-----------Message hardcode :
+
+You have and order from a of orderID : 1         
+
+//---------------------------
