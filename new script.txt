@@ -53,7 +53,11 @@ state varchar2(30),
 pincode varchar2(6));
 
 
-
+delete from order_item_quantity;
+delete from orders;
+alter table orders drop primary key cascade;
+alter table orders modify orderid number(7) primary key;
+alter table order_item_quantity modify orderid number(7) references orders(orderid);
 
 
 
